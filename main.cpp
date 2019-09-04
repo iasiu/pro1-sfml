@@ -2,7 +2,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "JUMP");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "THE SETTLERS");
 
     window.setFramerateLimit(60);
 
