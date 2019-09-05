@@ -11,12 +11,9 @@ HandleInput::~HandleInput(){
 
 }
 
-void HandleInput::updatePos(const sf::RenderWindow & w) {
+void HandleInput::update(const sf::RenderWindow & w) {
     this->mouseX = sf::Mouse::getPosition(w).x;
     this->mouseY = sf::Mouse::getPosition(w).y;
-}
-
-void HandleInput::updateButtonPressed() {
     this->isLeftMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
     this->isRightMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 }

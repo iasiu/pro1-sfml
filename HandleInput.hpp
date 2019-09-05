@@ -6,8 +6,7 @@ class HandleInput{
 public:
     HandleInput();
     ~HandleInput();
-    void updatePos(const sf::RenderWindow &);
-    void updateButtonPressed();
+    void update(const sf::RenderWindow &);
     float getPosX();
     float getPosY();
     bool getIsLeftPressed();
