@@ -4,7 +4,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "THE SETTLERS");
 
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(30);
 
     while (window.isOpen())
     {
@@ -18,7 +18,6 @@ int main()
                 window.close();
             }
         }
-
 
         window.clear();
         window.display();
