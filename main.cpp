@@ -14,7 +14,7 @@ int main()
         {
             if (event.type == sf::Event::Closed)
             {
-                return 0;
+                return 0; // a mo¿e exit(0)?
                 window.close();
             }
         }
