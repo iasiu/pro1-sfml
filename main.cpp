@@ -3,9 +3,9 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "THE SETTLERS");
+    sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), GAME_NAME);
 
-    window.setFramerateLimit(30);
+    window.setFramerateLimit(WIN_FRAMERATE);
 
     while (window.isOpen())
     {
