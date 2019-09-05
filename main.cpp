@@ -3,6 +3,8 @@
 
 int main()
 {
+    Game game;
+
     sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), GAME_NAME);
 
     window.setFramerateLimit(WIN_FRAMERATE);
@@ -10,6 +12,7 @@ int main()
     while (window.isOpen())
     {
         sf::Event event;
+        game.printToConsole(window);
 
         while (window.pollEvent(event))
         {

@@ -12,9 +12,10 @@ class Game {
 public:
     Game();
     ~Game();
+    void printToConsole(const sf::RenderWindow &);
 
 private:
     Map gameMap;
-    HandleInput handleInput;
+    HandleInput handleMouseInput;
 
 };
