@@ -5,5 +5,6 @@
 #include "Objects.hpp"
 
 class Game {
-
+    Game();
+    ~Game();
 };
