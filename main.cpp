@@ -15,7 +15,7 @@ int main()
         {
             if (event.type == sf::Event::Closed)
             {
-                return 0; // a moze exit(0)?
+                return 0;
                 window.close();
             }
         }
