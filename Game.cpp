@@ -23,5 +23,4 @@ void Game::printMap(sf::RenderWindow & w) {
 void Game::update(sf::RenderWindow & w) {
     handleMouseInput.update(w);
     w.setView(camera.update(handleMouseInput.getDx(),handleMouseInput.getDy()));
-    std::cout<<camera.getPosX()<<std::endl;
 }

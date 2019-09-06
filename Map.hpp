@@ -13,4 +13,5 @@ public:
 private:
     sf::Texture mapTexture;
     sf::Sprite mapSprite;
+    int mapSquares [100] [100];
 };
