@@ -13,6 +13,7 @@ int main()
     {
         sf::Event event;
         game.printToConsole(window);
+        game.update(window);
 
         while (window.pollEvent(event))
         {

@@ -5,6 +5,7 @@
 #include "Map.hpp"
 #include "HandleInput.hpp"
 #include "Objects.hpp"
+#include "Camera.hpp"
 #include "Constants.hpp"
 
 class Game {
@@ -14,9 +15,10 @@ public:
     ~Game();
     void printToConsole(const sf::RenderWindow &);
     void printMap(sf::RenderWindow &);
+    void update(sf::RenderWindow &);
 
 private:
     Map gameMap;
     HandleInput handleMouseInput;
-
+    Camera camera;
 };

@@ -20,3 +20,7 @@ void Game::printToConsole(const sf::RenderWindow & w) {
 void Game::printMap(sf::RenderWindow & w) {
     gameMap.draw(w);
 }
+
+void Game::update(sf::RenderWindow & w) {
+    w.setView(camera.update());
+}
