@@ -13,6 +13,7 @@ public:
     Game();
     ~Game();
     void printToConsole(const sf::RenderWindow &);
+    void printMap(sf::RenderWindow &);
 
 private:
     Map gameMap;

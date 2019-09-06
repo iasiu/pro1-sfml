@@ -24,6 +24,7 @@ int main()
         }
 
         window.clear();
+        game.printMap(window);
         window.display();
     }
 

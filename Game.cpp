@@ -15,3 +15,7 @@ void Game::printToConsole(const sf::RenderWindow & w) {
     std::cout<<"L: "<<handleMouseInput.getIsLeftPressed()<<std::endl;
     std::cout<<"R: "<<handleMouseInput.getIsRightPressed()<<std::endl;
 }
+
+void Game::printMap(sf::RenderWindow & w) {
+    gameMap.draw(w);
+}
