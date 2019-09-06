@@ -2,6 +2,7 @@
 
 Game::Game(){
     std::cout<<"Game started"<<std::endl;
+    this->gameMap.load();
 }
 
 Game::~Game(){
