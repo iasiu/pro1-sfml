@@ -12,7 +12,7 @@ int main()
     while (window.isOpen())
     {
         sf::Event event;
-        //game.printToConsole(window); //ODKOMENTUJ PO INFO O MYSZCE
+        //game.printToConsole(window); //INFO O MYSZCE
         game.update(window);
 
         while (window.pollEvent(event))

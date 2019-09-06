@@ -10,7 +10,6 @@ Game::~Game(){
 }
 
 void Game::printToConsole(const sf::RenderWindow & w) {
-    handleMouseInput.update(w);
     std::cout<<"x: "<<handleMouseInput.getPosX()<<std::endl;
     std::cout<<"y: "<<handleMouseInput.getPosY()<<std::endl;
     std::cout<<"L: "<<handleMouseInput.getIsLeftPressed()<<std::endl;
@@ -22,5 +21,7 @@ void Game::printMap(sf::RenderWindow & w) {
 }
 
 void Game::update(sf::RenderWindow & w) {
-    w.setView(camera.update());
+    handleMouseInput.update(w);
+    w.setView(camera.update(handleMouseInput.getDx(),handleMouseInput.getDy()));
+    std::cout<<camera.getPosX()<<std::endl;
 }
