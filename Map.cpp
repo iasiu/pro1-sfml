@@ -19,57 +19,59 @@ void Map::load(){
     for(int i=0; i<100; i++)
         for(int j=0; j<100; j++)
         {
-            this->mapSquares[i][j] = 1 + (std::rand() % 60);
+            float smoothness = 15;
+            this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness, j/smoothness) * 6);
+            std::cout<<mapSquares[i][j]<<std::endl;
             
-            this->square[i][j].setSize(sf::Vector2f(40, 40));
-            this->square[i][j].setPosition(i*40, j*40);
+            this->square[i][j].setSize(sf::Vector2f(GRID, GRID));
+            this->square[i][j].setPosition(i*GRID, j*GRID);
             
             switch (mapSquares [i][j]) {
-                case 1 ... 8:
+                case 1:
                     this->square[i][j].setFillColor(sf::Color::Green);
                     break;
                     
-                case 9 ... 16:
+                case 2:
                     this->square[i][j].setFillColor(sf::Color::Green);
                     break;
                     
-                case 17 ... 24:
+                case 3:
                     this->square[i][j].setFillColor(sf::Color::Green);
                     break;
                     
-                case 25 ... 32:
+                case 4:
                     this->square[i][j].setFillColor(sf::Color::Green);
                     break;
                     
-                case 33 ... 40:
+                case 5:
                     this->square[i][j].setFillColor(sf::Color::Green);
                     break;
                     
-                case 41 ... 48:
+                case 6:
                     this->square[i][j].setFillColor(sf::Color::Green);
                     break;
                     
-                case 49 ... 52:
+                case 7:
                     this->square[i][j].setFillColor(sf::Color::Yellow);
                     break;
                     
-                case 53 ... 56:
+                case 8:
                     this->square[i][j].setFillColor(sf::Color::Yellow);
                     break;
                     
-                case 57:
+                case 9:
                     this->square[i][j].setFillColor(sf::Color::Blue);
                     break;
                     
-                case 58:
+                case 10:
                     this->square[i][j].setFillColor(sf::Color::Blue);
                     break;
                     
-                case 59:
+                case 11:
                     this->square[i][j].setFillColor(sf::Color::Cyan);
                     break;
                     
-                case 60:
+                case 12:
                     this->square[i][j].setFillColor(sf::Color::Cyan);
                     break;
                     

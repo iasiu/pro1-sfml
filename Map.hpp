@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "PerlinNoise.hpp"
+#include "Constants.hpp"
+#include "SimplexNoise.h"
 
 class Map{
 
