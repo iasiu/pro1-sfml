@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Constants.hpp"
 #include <iostream>
 
 class Camera {
