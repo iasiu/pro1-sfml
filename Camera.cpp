@@ -23,7 +23,7 @@ sf::View Camera::update(float dx, float dy) {
     if(this->posY <= WIN_HEIGHT/2)
         this->posY = WIN_HEIGHT/2;
     else if(this->posY >= 2600 - WIN_HEIGHT/2)
-        this->posY = 2600- WIN_HEIGHT/2;
+        this->posY = 2600 - WIN_HEIGHT/2;
 
     return this->view;
 }
