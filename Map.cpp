@@ -17,7 +17,7 @@ void Map::load(){
     }*/
 
     for(int i=0; i<100; i++)
-        for(int j=0; j<50; j++)
+        for(int j=0; j<65; j++)
         {
             float smoothness = 30;
             this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness, j/smoothness) * 6);
@@ -58,7 +58,7 @@ void Map::draw(sf::RenderWindow & w){
     //w.draw(this->mapSprite);
 
     for(int i=0; i<100; i++)
-        for(int j=0; j<50; j++)
+        for(int j=0; j<65; j++)
         {
             w.draw(this->square[i][j]);
         }
@@ -81,7 +81,7 @@ void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindo
 
     for(int i=0; i<100; i++)
     {
-        for(int j=0; j<50; j++)
+        for(int j=0; j<65; j++)
         {
             rect[i][j] = square[i][j].getLocalBounds();
             rect[i][j].left = i * GRID;

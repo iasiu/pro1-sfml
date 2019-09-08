@@ -14,9 +14,8 @@ public:
     void checkMouseOver(float, float, float, float, sf::RenderWindow &);
 
 private:
-    sf::Texture mapTexture;
-    sf::Sprite mapSprite;
+    sf::Texture mapTiles;
 
-    sf::RectangleShape square [100] [50];
-    int mapSquares [100] [50]; // 1 - trawa1, 2 - trawa2, 3 - trawa3, 4 - trawa4, 5 - trawa5, 6 - trawa6, 7 - piasek1, 8 - piasek2, 9 - woda1, 10 - woda2, 11 - kamien1, 12 - kamien2
+    sf::RectangleShape square [100] [65];
+    int mapSquares [100] [100]; // 1 - grass1, 2 - grass2, 3 - grass3, 4 - grass4, 5 - grass5, 6 - grass6, 7 - sand1, 8 - sand2, 9 - water1, 10 - water2, 11 - stone1, 12 - stone2
 };
