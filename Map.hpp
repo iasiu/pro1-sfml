@@ -11,6 +11,7 @@ public:
     ~Map();
     void load();
     void draw(sf::RenderWindow &);
+    void checkMouseOver(float, float, float, float, sf::RenderWindow &);
 
 private:
     sf::Texture mapTexture;

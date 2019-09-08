@@ -19,7 +19,7 @@ void Map::load(){
     for(int i=0; i<100; i++)
         for(int j=0; j<100; j++)
         {
-            float smoothness = 15;
+            float smoothness = 40;
             this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness, j/smoothness) * 6);
             
             this->square[i][j].setSize(sf::Vector2f(GRID, GRID));
@@ -86,5 +86,46 @@ void Map::draw(sf::RenderWindow & w){
     
     for(int i=0; i<100; i++)
         for(int j=0; j<100; j++)
+        {
             w.draw(this->square[i][j]);
+        }
+}
+
+void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindow & w) {
+    
+    float x = mx + cx - WIN_WIDTH/2;
+    float y = my + cy - WIN_HEIGHT/2;
+    
+    std::cout << x << std::endl;
+    std::cout << y << std::endl;
+    
+    sf::FloatRect rect [100][100];
+    
+    sf::RectangleShape checkRect;
+    checkRect.setFillColor(sf::Color::Black);
+    checkRect.setOutlineColor(sf::Color::Black);
+    checkRect.setOutlineThickness(2);
+    
+    for(int i=0; i<100; i++)
+    {
+        for(int j=0; j<100; j++)
+        {
+            rect[i][j] = square[i][j].getLocalBounds();
+            rect[i][j].left = i * GRID;
+            rect[i][j].top = j * GRID;
+            sf::Color fCol = square[i][j].getFillColor();
+            
+            if(rect[i][j].contains(x, y))
+            {
+                fCol.a = 150;
+                square[i][j].setFillColor(fCol);
+                std::cout << "CONTAINS" << std::endl;
+            }
+            else
+            {
+                fCol.a = 255;
+                square[i][j].setFillColor(fCol);
+            }
+        }
+    }
 }
