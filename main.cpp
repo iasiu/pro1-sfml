@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "Game.hpp"
 
+
+
 int main()
 {
     Game game;
@@ -8,7 +10,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), GAME_NAME);
 
     window.setFramerateLimit(WIN_FRAMERATE);
-    
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -27,6 +29,7 @@ int main()
         game.printMap(window);
         game.update(window);
         window.display();
+        system("cls");
     }
 
     return 0;

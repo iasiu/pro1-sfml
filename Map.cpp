@@ -115,11 +115,14 @@ void Map::draw(sf::RenderWindow & w){
     //w.draw(this->mapSprite);
 
     for(int i=0; i<100; i++)
+    {
         for(int j=0; j<65; j++)
         {
             //w.draw(this->square[i][j]);
             w.draw(this->squareSprites[i][j]);
         }
+    }
+
 }
 
 void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindow & w) {
@@ -127,37 +130,26 @@ void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindo
     float x = mx + cx - WIN_WIDTH/2;
     float y = my + cy - WIN_HEIGHT/2;
 
-    std::cout << x << std::endl;
-    std::cout << y << std::endl;
+    std::cout <<  std::endl <<"x: "<< x;  //pozycja myszy wzglêdem ca³ej mapy (globalna pozycja myszy)
+    std::cout <<" y: "<< y << std::endl;
 
-    sf::FloatRect rect [100][100];
+     this->cordX=(int)(x)/GRID;                 //koordynaty x i y tile'a na którym jest mysz
+     this->cordY=(int)(y)/GRID;
 
-    sf::RectangleShape checkRect;
-    checkRect.setFillColor(sf::Color::Black);
-    checkRect.setOutlineColor(sf::Color::Black);
-    checkRect.setOutlineThickness(2);
+    std::cout <<"Tile coordinates: "<<cordX<<" "<<cordY<<" \n";
+    std::cout <<"Tile number: "<< cordX + 100 * cordY <<"\n";       //numer tile'a
 
+
+//mechanizm podœwietlania aktualnie najechanego muszk¹ tile'a
     for(int i=0; i<100; i++)
     {
         for(int j=0; j<65; j++)
         {
-            rect[i][j] = squareSprites[i][j].getLocalBounds();
-            rect[i][j].left = i * GRID;
-            rect[i][j].top = j * GRID;
-            sf::Color col = sf::Color(0,0,0, 10);
-
-            if(rect[i][j].contains(x, y))
-            {
-             //   fCol.a = 150;
-            //    square[i][j].setFillColor(fCol);
-                //squareSprites[i][j].setColor(col);
-            }
-            else
-            {
-             //   fCol.a = 255;
-            //    square[i][j].setFillColor(fCol);
-                //squareSprites[i][j].setColor(sf::Color(0,0,0,0));
-            }
+           squareSprites[i][j].setColor(sf::Color(255,255,255));
         }
     }
+    if((cordX>-1 && cordX<100) && (cordY>-1 && cordY<65))
+      squareSprites[cordX][cordY].setColor(sf::Color(200,200,200,200));
+
+    //TODO: return sf::vector2i(cordX,cordY)
 }
