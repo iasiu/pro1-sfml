@@ -133,14 +133,14 @@ void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindo
     float x = mx + cx - WIN_WIDTH/2;
     float y = my + cy - WIN_HEIGHT/2;
 
-    std::cout <<  std::endl <<"x: "<< x;  //pozycja myszy wzglêdem ca³ej mapy (globalna pozycja myszy)
-    std::cout <<" y: "<< y << std::endl;
+    //std::cout <<  std::endl <<"x: "<< x;  //pozycja myszy wzglêdem ca³ej mapy (globalna pozycja myszy)
+    //std::cout <<" y: "<< y << std::endl;
 
      this->cordX=(int)(x)/GRID;                 //koordynaty x i y tile'a na którym jest mysz
      this->cordY=(int)(y)/GRID;
 
-    std::cout <<"Tile coordinates: "<<cordX<<" "<<cordY<<" \n";
-    std::cout <<"Tile number: "<< cordX + 100 * cordY <<"\n";       //numer tile'a
+    //std::cout <<"Tile coordinates: "<<cordX<<" "<<cordY<<" \n";
+    //std::cout <<"Tile number: "<< cordX + 100 * cordY <<"\n";       //numer tile'a
 
 
 //mechanizm podœwietlania aktualnie najechanego muszk¹ tile'a
