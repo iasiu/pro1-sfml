@@ -7,7 +7,7 @@ int main()
 {
     Game game;
 
-    sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), GAME_NAME);
+    sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), GAME_NAME, sf::Style::Titlebar | sf::Style::Close);
 
     window.setFramerateLimit(WIN_FRAMERATE);
 
@@ -29,7 +29,7 @@ int main()
         game.printMap(window);
         game.update(window);
         window.display();
-        system("cls");
+        //system("cls");
     }
 
     return 0;

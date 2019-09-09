@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Constants.hpp"
 #include "SimplexNoise.h"
+#include <ctime>
 
 class Map{
 

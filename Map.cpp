@@ -24,12 +24,15 @@ void Map::load(){
 
     if(loaded)
     {
+        srand(time(NULL));
+        unsigned long long int seed = 1 + rand()% 200;
+
         for(int i=0; i<100; i++)
             for(int j=0; j<65; j++)
             {
 
-                float smoothness = 30;
-                this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness, j/smoothness) * 6);
+                float smoothness = 50;
+                this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness +seed , j/smoothness + seed) * 6);
 
                 this->squareSprites[i][j].setPosition(sf::Vector2f(i*GRID, j*GRID));
                 this->squareSprites[i][j].setTexture(mapTiles);
