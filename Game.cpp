@@ -19,7 +19,7 @@ void Game::printToConsole(const sf::RenderWindow & w) {
 
 void Game::printMap(sf::RenderWindow & w) {
     gameMap.draw(w,camera.getPosX(),camera.getPosY());
-    col.draw(w, gameMap.get_mapSquares());
+    col.draw(w);
 }
 
 void Game::update(sf::RenderWindow & w) {

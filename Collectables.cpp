@@ -21,116 +21,87 @@ Collectables::Collectables()
 
 Collectables::~Collectables()
 {
-for(int i=0;i<100;i++)
-        {
-            for(int j=0;j<65;j++)
-                tiles[i][j];
-        }
+
 }
 
 void Collectables::setup(int ** mapSquares)
 {
-    for(int i=0;i<100;i++)
+    for(int i=0;i<99;i++)
         {
-            for(int j=0;j<65;j++)
+            for(int j=0;j<64;j++)
             {
-                if(mapSquares[i][j] == 1 || mapSquares[i][j] == 2 || mapSquares[i][j] == 3 || mapSquares[i][j] == 4 || mapSquares[i][j] == 5 || mapSquares[i][j] == 6 || mapSquares[i][j] == 7 || mapSquares[i][j] == 8)
+                if(mapSquares[i][j]>=1 && mapSquares[i][j]<=6)
                 {
-                    int x=rand()%100+1;
-                    if(x==1)
-                    this->tiles[i][j]=3;
-                    else if(x==2)
-                    this->tiles[i][j]=4;
-                    else if(x==3)
-                    this->tiles[i][j]=5;
+                        float smoothness = 10;
+                        int temp = SimplexNoise::noise(i/smoothness + seed, j/smoothness + seed) * 12;
+                        if(temp > 10)
+                        {
+                           tiles[i][j]=tree1;
+
+                        }
+                        else if(temp < -10)
+                        {
+                           tiles[i][j]=tree2;
+                        }
+                        else
+                        {
+                           int x=rand()%100+1; //to 100 wskazuje jak czêsto siê pojawiaj¹ collectablesy (so we can make it to constants.hpp)
+
+                            if(x==1)
+                            this->tiles[i][j]=stone1;
+                            else if(x==2)
+                            this->tiles[i][j]=stone2;
+                            else if(x==3 || x==4)
+                            this->tiles[i][j]=bush1;
+                        }
                 }
             }
         }
 }
 
-void Collectables::draw(sf::RenderWindow & w, int ** mapSquares)
+void Collectables::draw(sf::RenderWindow & w)
 {
     if(loaded)
     {
-        for(int i=1; i<99; i++)
-        {
-            for(int j=1; j<64; j++)
-            {
-                if(mapSquares[i][j] == 1 || mapSquares[i][j] == 2 || mapSquares[i][j] == 3 || mapSquares[i][j] == 4 || mapSquares[i][j] == 5 || mapSquares[i][j] == 6 || mapSquares[i][j] == 7 || mapSquares[i][j] == 8)
-                {
-                        float smoothness = 10;
-
-                        int temp = SimplexNoise::noise(i/smoothness + seed, j/smoothness + seed) * 12;
-                        if(temp > 10)
-                        {
-                           tiles[i][j]=1; //drzewko rodzaj 1
-
-                        }
-                        else if(temp < -10)
-                        {
-                           tiles[i][j]=2; //drzewko rodzaj 2
-                        }
-
-                }
-            }
-        }
-
-
-        for(int i=1;i<99;i++)
+        for(int i=1;i<99;i++) //zostawiam taki zakres bo i tak od 0 i do 100 nie ma co rysowaæ (bo setup ma takie same zakresy)
         {
             for(int j=1;j<64;j++)
             {
+                this->sprite.setTexture(collectablesTexture); //jeœli przek³adamy wydajnoœæ ponad czytelnoœæ to, to siê powinno znaleŸæ w ka¿dym case'ie (oprócz blank) zamiast tutaj
+                this->sprite.setPosition(i*GRID,j*GRID-GRID);
                 switch(tiles[i][j])
                 {
-                case 0:
+                case blank:
                     {
-                        break;
-                    }
-                case 1:
-                    {
-                            this->tree.setTexture(collectablesTexture);
-                            this->tree.setPosition(i*GRID,j*GRID-GRID);
-                            tree.setTextureRect(sf::IntRect(0, 0, 40, 80));
-                            w.draw(tree);
                             break;
                     }
-                case 2:
+                case tree1:
                     {
-                            this->tree.setTexture(collectablesTexture);
-                            this->tree.setPosition(i*GRID,j*GRID-GRID);
-                            tree.setTextureRect(sf::IntRect(40, 0, 40, 80));
-                            w.draw(tree);
+                            sprite.setTextureRect(sf::IntRect(0, 0, 40, 80));  w.draw(sprite);
                             break;
                     }
-                case 3:
+                case tree2:
                     {
-                            this->tree.setTexture(collectablesTexture);
-                            this->tree.setPosition(i*GRID,j*GRID-GRID);
-                            tree.setTextureRect(sf::IntRect(0, 80, 40, 40));
-                            w.draw(tree);
+                            sprite.setTextureRect(sf::IntRect(40, 0, 40, 80));  w.draw(sprite);
                             break;
                     }
-                case 4:
+                case stone1:
                     {
-                            this->tree.setTexture(collectablesTexture);
-                            this->tree.setPosition(i*GRID,j*GRID-GRID);
-                            tree.setTextureRect(sf::IntRect(40, 80, 40, 40));
-                            w.draw(tree);
+                            sprite.setTextureRect(sf::IntRect(0, 80, 40, 40));  w.draw(sprite);
                             break;
                     }
-                case 5:
+                case stone2:
                     {
-                            this->tree.setTexture(collectablesTexture);
-                            this->tree.setPosition(i*GRID,j*GRID-GRID);
-                            tree.setTextureRect(sf::IntRect(0, 120, 40, 40));
-                            w.draw(tree);
+                            sprite.setTextureRect(sf::IntRect(40, 80, 40, 40));  w.draw(sprite);
                             break;
                     }
-
+                case bush1:
+                    {
+                            sprite.setTextureRect(sf::IntRect(0, 120, 40, 40));  w.draw(sprite);
+                            break;
+                    }
                 }
             }
         }
-
-
     }
 }

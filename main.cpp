@@ -29,7 +29,7 @@ int main()
         game.printMap(window);
         game.update(window);
         window.display();
-        //system("cls");
+        system("cls");
     }
 
     return 0;
