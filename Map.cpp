@@ -27,7 +27,6 @@ void Map::load(){
         for(int i=0; i<100; i++)
             for(int j=0; j<65; j++)
             {
-
                 float smoothness = 30;
                 this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness +seed , j/smoothness + seed) * 6);
 
@@ -65,7 +64,6 @@ void Map::load(){
                         }
                         break;
                     }
-
                     case 9 ... 10:
                         {
                             int randNum = 1 + std::rand()%2;
@@ -81,8 +79,6 @@ void Map::load(){
 
                             break;
                         }
-
-
                     case 11 ... 12:
                         {
                             int randNum = 1 + std::rand()%2;
@@ -98,9 +94,6 @@ void Map::load(){
 
                             break;
                         }
-
-
-
                     default:
                         break;
             }
@@ -109,15 +102,16 @@ void Map::load(){
     }
 }
 
-void Map::draw(sf::RenderWindow & w){
-    for(int i=0; i<100; i++)
+void Map::draw(sf::RenderWindow & w, float cx, float cy){
+
+
+    for(int i=(int)cx/GRID-16; i<(int)cx/GRID+17; i++)
     {
-        for(int j=0; j<65; j++)
+        for(int j=(int)cy/GRID-9; j<(int)cy/GRID+10; j++)
         {
             w.draw(this->squareSprites[i][j]);
         }
     }
-
 }
 
 void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindow & w) {
@@ -125,14 +119,14 @@ void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindo
     float x = mx + cx - WIN_WIDTH/2;
     float y = my + cy - WIN_HEIGHT/2;
 
-    //std::cout <<  std::endl <<"x: "<< x;  //pozycja myszy wzglêdem ca³ej mapy (globalna pozycja myszy)
-    //std::cout <<" y: "<< y << std::endl;
+    std::cout <<  std::endl <<"x: "<< x;  //pozycja myszy wzglêdem ca³ej mapy (globalna pozycja myszy)
+    std::cout <<" y: "<< y << std::endl;
 
      this->cordX=(int)(x)/GRID;                 //koordynaty x i y tile'a na którym jest mysz
      this->cordY=(int)(y)/GRID;
 
-    //std::cout <<"Tile coordinates: "<<cordX<<" "<<cordY<<" \n";
-    //std::cout <<"Tile number: "<< cordX + 100 * cordY <<"\n";       //numer tile'a
+    std::cout <<"Tile coordinates: "<<cordX<<" "<<cordY<<" \n";
+    std::cout <<"Tile number: "<< cordX + 100 * cordY <<"\n";       //numer tile'a
 
 
 //mechanizm podœwietlania aktualnie najechanego muszk¹ tile'a

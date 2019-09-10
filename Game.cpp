@@ -3,6 +3,7 @@
 Game::Game(){
     std::cout<<"Game started"<<std::endl;
     this->gameMap.load();
+    col.setup(gameMap.get_mapSquares());
 }
 
 Game::~Game(){
@@ -17,7 +18,7 @@ void Game::printToConsole(const sf::RenderWindow & w) {
 }
 
 void Game::printMap(sf::RenderWindow & w) {
-    gameMap.draw(w);
+    gameMap.draw(w,camera.getPosX(),camera.getPosY());
     col.draw(w, gameMap.get_mapSquares());
 }
 
@@ -25,5 +26,4 @@ void Game::update(sf::RenderWindow & w) {
     handleMouseInput.update(w);
     w.setView(camera.update(handleMouseInput.getDx(),handleMouseInput.getDy()));
     gameMap.checkMouseOver(handleMouseInput.getPosX(), handleMouseInput.getPosY(), camera.getPosX(), camera.getPosY(), w);
-
 }
