@@ -18,10 +18,12 @@ void Game::printToConsole(const sf::RenderWindow & w) {
 
 void Game::printMap(sf::RenderWindow & w) {
     gameMap.draw(w);
+    col.draw(w, gameMap.get_mapSquares());
 }
 
 void Game::update(sf::RenderWindow & w) {
     handleMouseInput.update(w);
     w.setView(camera.update(handleMouseInput.getDx(),handleMouseInput.getDy()));
     gameMap.checkMouseOver(handleMouseInput.getPosX(), handleMouseInput.getPosY(), camera.getPosX(), camera.getPosY(), w);
+
 }

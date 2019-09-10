@@ -5,6 +5,7 @@
 #include "Map.hpp"
 #include "HandleInput.hpp"
 #include "Objects.hpp"
+#include "Collectables.hpp"
 #include "Camera.hpp"
 #include "Constants.hpp"
 
@@ -21,4 +22,5 @@ private:
     Map gameMap;
     HandleInput handleMouseInput;
     Camera camera;
+    Collectables col;
 };
