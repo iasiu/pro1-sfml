@@ -3,11 +3,15 @@
 
 
 
+
 int main()
 {
     Game game;
 
     sf::RenderWindow window(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), GAME_NAME, sf::Style::Titlebar | sf::Style::Close);
+
+    window.setMouseCursorVisible(false);
+
 
     window.setFramerateLimit(WIN_FRAMERATE);
 

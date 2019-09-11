@@ -7,6 +7,7 @@ Map::Map(){
     {
         loaded = 1;
     }
+
 }
 
 Map::~Map(){
@@ -105,6 +106,7 @@ void Map::load(){
 void Map::draw(sf::RenderWindow & w, float cx, float cy){
 
 
+
     for(int i=(int)cx/GRID-16; i<(int)cx/GRID+17; i++)
     {
         for(int j=(int)cy/GRID-9; j<(int)cy/GRID+10; j++)
@@ -114,22 +116,24 @@ void Map::draw(sf::RenderWindow & w, float cx, float cy){
     }
 }
 
-void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::RenderWindow & w) {
+void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::Sprite& cursor) {
 
     float x = mx + cx - WIN_WIDTH/2;
     float y = my + cy - WIN_HEIGHT/2;
 
-    std::cout <<  std::endl <<"x: "<< x;  //pozycja myszy wzglêdem ca³ej mapy (globalna pozycja myszy)
+    std::cout <<"x: "<< x;  //pozycja myszy wzglÃªdem caÂ³ej mapy (globalna pozycja myszy)
     std::cout <<" y: "<< y << std::endl;
 
-     this->cordX=(int)(x)/GRID;                 //koordynaty x i y tile'a na którym jest mysz
+     this->cordX=(int)(x)/GRID;                 //koordynaty x i y tile'a na ktÃ³rym jest mysz
      this->cordY=(int)(y)/GRID;
 
     std::cout <<"Tile coordinates: "<<cordX<<" "<<cordY<<" \n";
     std::cout <<"Tile number: "<< cordX + 100 * cordY <<"\n";       //numer tile'a
 
 
-//mechanizm podœwietlania aktualnie najechanego muszk¹ tile'a
+    cursor.setPosition(x,y); //ustawienie pozycji kursora na pozycjÄ™ tego niewidocznego
+
+//mechanizm podÅ“wietlania aktualnie najechanego muszkÂ¹ tile'a
     for(int i=0; i<100; i++)
     {
         for(int j=0; j<65; j++)

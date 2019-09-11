@@ -12,12 +12,13 @@ public:
     ~Map();
     void load();
     void draw(sf::RenderWindow &,float,float);
-    void checkMouseOver(float, float, float, float, sf::RenderWindow &);
+    void checkMouseOver(float, float, float, float,sf::Sprite&);
     int ** get_mapSquares();
 
 private:
     sf::Texture mapTiles;
     sf::Sprite squareSprites [101] [66];
+
 
     SimplexNoise noise;
 

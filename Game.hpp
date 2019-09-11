@@ -18,9 +18,16 @@ public:
     void printMap(sf::RenderWindow &);
     void update(sf::RenderWindow &);
 
+    void setCursorTex(bool yes);
+
 private:
     Map gameMap;
     HandleInput handleMouseInput;
     Camera camera;
     Collectables col;
+
+
+    sf::Texture cursorTex;
+    sf::Sprite cursor;
+
 };
