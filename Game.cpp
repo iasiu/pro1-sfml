@@ -11,6 +11,8 @@ Game::Game(){
         this->cursor.setTextureRect(sf::IntRect(0,0,20,20));
     }
 
+    //this->col.printTiles();
+
 }
 
 Game::~Game(){

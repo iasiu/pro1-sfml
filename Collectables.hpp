@@ -4,6 +4,7 @@
 #include "SimplexNoise.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include <iostream>
 
 class Collectables : public Objects
 {
@@ -12,6 +13,7 @@ public:
     ~Collectables();
     void setup(int **); //inicjalizuje pozycjê drzew, kamieni i krzewow na mapie |
     void draw(sf::RenderWindow &);
+    void printTiles();
 private:
     int tiles[100][65];
     sf::Sprite sprite;

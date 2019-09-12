@@ -28,7 +28,7 @@ void Collectables::setup(int ** mapSquares)
 {
     for(int i=0;i<99;i++)
         {
-            for(int j=0;j<64;j++)
+            for(int j=1;j<64;j++)
             {
                 if(mapSquares[i][j]>=1 && mapSquares[i][j]<=6)
                 {
@@ -43,7 +43,7 @@ void Collectables::setup(int ** mapSquares)
                         {
                            tiles[i][j]=tree2;
                         }
-                        else
+                        else if(temp<=10 && temp>=-10)
                         {
                            int x=rand()%100+1; //to 100 wskazuje jak czêsto siê pojawiaj¹ collectablesy (so we can make it to constants.hpp)
 
@@ -67,8 +67,7 @@ void Collectables::draw(sf::RenderWindow & w)
         {
             for(int j=1;j<64;j++)
             {
-                this->sprite.setTexture(collectablesTexture); //jeœli przek³adamy wydajnoœæ ponad czytelnoœæ to, to siê powinno znaleŸæ w ka¿dym case'ie (oprócz blank) zamiast tutaj
-                this->sprite.setPosition(i*GRID,j*GRID-GRID);
+                //jeœli przek³adamy wydajnoœæ ponad czytelnoœæ to, to siê powinno znaleŸæ w ka¿dym case'ie (oprócz blank) zamiast tutaj
                 switch(tiles[i][j])
                 {
                 case blank:
@@ -77,31 +76,51 @@ void Collectables::draw(sf::RenderWindow & w)
                     }
                 case tree1:
                     {
+                            this->sprite.setPosition(i*GRID,j*GRID-GRID);
+                             this->sprite.setTexture(collectablesTexture);
                             sprite.setTextureRect(sf::IntRect(0, 0, 40, 80));  w.draw(sprite);
                             break;
                     }
                 case tree2:
                     {
+                            this->sprite.setPosition(i*GRID,j*GRID-GRID);
+                             this->sprite.setTexture(collectablesTexture);
                             sprite.setTextureRect(sf::IntRect(40, 0, 40, 80));  w.draw(sprite);
                             break;
                     }
                 case stone1:
                     {
+                            this->sprite.setPosition(i*GRID,j*GRID);
+                             this->sprite.setTexture(collectablesTexture);
                             sprite.setTextureRect(sf::IntRect(0, 80, 40, 40));  w.draw(sprite);
                             break;
                     }
                 case stone2:
                     {
+                            this->sprite.setPosition(i*GRID,j*GRID);
+                             this->sprite.setTexture(collectablesTexture);
                             sprite.setTextureRect(sf::IntRect(40, 80, 40, 40));  w.draw(sprite);
                             break;
                     }
                 case bush1:
                     {
+                            this->sprite.setPosition(i*GRID,j*GRID);
+                             this->sprite.setTexture(collectablesTexture);
                             sprite.setTextureRect(sf::IntRect(0, 120, 40, 40));  w.draw(sprite);
                             break;
                     }
                 }
             }
+        }
+    }
+}
+
+void Collectables::printTiles(){
+    for(int i = 1; i<99; i++)
+    {
+        for(int j = 1; j<64; j++)
+        {
+            std::cout<<"Tile: "<<i<<" "<<j<<" "<<this->tiles[i][j]<<std::endl;
         }
     }
 }
