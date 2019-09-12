@@ -8,15 +8,15 @@ Map::Map(){
         loaded = 1;
     }
 
-    for(int i=0; i<100; i++)
-        for(int j=0; j<65; j++)
+    for(int i=0; i<MAP_SIZE_X; i++)
+        for(int j=0; j<MAP_SIZE_Y; j++)
             this->numRand[i][j] = 1+std::rand()%6;
 
 
 }
 
 Map::~Map(){
-    for(int i=0; i<100; i++)
+    for(int i=0; i<MAP_SIZE_X; i++)
     {
         delete [] copyArray[i];
     }
@@ -31,8 +31,8 @@ void Map::load(){
         unsigned long long int seedx = 1 + rand()% 1000;
         unsigned long long int seedy = 1 + rand()% 1000;
 
-        for(int i=0; i<100; i++)
-            for(int j=0; j<65; j++)
+        for(int i=0; i<MAP_SIZE_X; i++)
+            for(int j=0; j<MAP_SIZE_Y; j++)
             {
                 float smoothness = 30;
                 this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness +seedx , j/smoothness + seedy) * 6);
@@ -118,10 +118,10 @@ void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::Sprite& cur
 
 int ** Map::get_mapSquares()
 {
-    for(int i=0; i<100; i++)
+    for(int i=0; i<MAP_SIZE_X; i++)
     {
-        copyArray[i] = new int[65];
-            for(int j=0; j<65; j++)
+        copyArray[i] = new int[MAP_SIZE_Y];
+            for(int j=0; j<MAP_SIZE_Y; j++)
                 copyArray[i][j] = this->mapSquares[i][j];
     }
 

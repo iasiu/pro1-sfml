@@ -28,10 +28,10 @@ private:
     int cordY;
 
     //sf::RectangleShape square [100] [65];
-    int mapSquares [100] [65]; // 1 - grass1, 2 - grass2, 3 - grass3, 4 - grass4, 5 - grass5, 6 - grass6, 7 - sand1, 8 - sand2, 9 - water1, 10 - water2, 11 - stone1, 12 - stone2
-    int ** copyArray = new int * [100];
+    int mapSquares [MAP_SIZE_X] [MAP_SIZE_Y]; // 1 - grass1, 2 - grass2, 3 - grass3, 4 - grass4, 5 - grass5, 6 - grass6, 7 - sand1, 8 - sand2, 9 - water1, 10 - water2, 11 - stone1, 12 - stone2
+    int ** copyArray = new int * [MAP_SIZE_X];
 
-    short numRand [100] [65];
+    short numRand [MAP_SIZE_X] [MAP_SIZE_Y];
 
     enum type{
         grass1=1,

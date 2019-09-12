@@ -17,13 +17,13 @@ sf::View Camera::update(float dx, float dy) {
 
     if(this->posX <= WIN_WIDTH/2)
         this->posX = WIN_WIDTH/2;
-    else if(this->posX >= 4000 - WIN_WIDTH/2)
-        this->posX = 4000 - WIN_WIDTH/2;
+    else if(this->posX >= MAP_SIZE_X * GRID - WIN_WIDTH/2)
+        this->posX = MAP_SIZE_X * GRID - WIN_WIDTH/2;
 
     if(this->posY <= WIN_HEIGHT/2)
         this->posY = WIN_HEIGHT/2;
-    else if(this->posY >= 2600 - WIN_HEIGHT/2)
-        this->posY = 2600 - WIN_HEIGHT/2;
+    else if(this->posY >= MAP_SIZE_Y * GRID - WIN_HEIGHT/2)
+        this->posY = MAP_SIZE_Y * GRID - WIN_HEIGHT/2;
 
     return this->view;
 }

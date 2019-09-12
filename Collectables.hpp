@@ -15,7 +15,7 @@ public:
     void draw(sf::RenderWindow &);
     void printTiles();
 private:
-    int tiles[100][65];
+    int tiles[MAP_SIZE_X][MAP_SIZE_Y];
     sf::Sprite sprite;
     sf::Texture collectablesTexture;
     bool loaded;

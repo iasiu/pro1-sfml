@@ -8,9 +8,9 @@ Collectables::Collectables()
         srand(time(NULL));
         this->seed = std::rand()%200;
 
-        for(int i=0;i<100;i++)
+        for(int i=0;i<MAP_SIZE_X;i++)
         {
-            for(int j=0;j<65;j++)
+            for(int j=0;j<MAP_SIZE_Y;j++)
             {
                 tiles[i][j]=0;
             }
@@ -26,9 +26,9 @@ Collectables::~Collectables()
 
 void Collectables::setup(int ** mapSquares)
 {
-    for(int i=0;i<99;i++)
+    for(int i=0;i<MAP_SIZE_X;i++)
         {
-            for(int j=1;j<64;j++)
+            for(int j=1;j<MAP_SIZE_Y;j++)
             {
                 if(mapSquares[i][j]>=1 && mapSquares[i][j]<=6)
                 {
@@ -63,9 +63,9 @@ void Collectables::draw(sf::RenderWindow & w)
 {
     if(loaded)
     {
-        for(int i=1;i<99;i++) //zostawiam taki zakres bo i tak od 0 i do 100 nie ma co rysowaæ (bo setup ma takie same zakresy)
+        for(int i=0;i<MAP_SIZE_X;i++) //zostawiam taki zakres bo i tak od 0 i do 100 nie ma co rysowaæ (bo setup ma takie same zakresy)
         {
-            for(int j=1;j<64;j++)
+            for(int j=1;j<MAP_SIZE_Y;j++)
             {
                 //jeœli przek³adamy wydajnoœæ ponad czytelnoœæ to, to siê powinno znaleŸæ w ka¿dym case'ie (oprócz blank) zamiast tutaj
                 switch(tiles[i][j])
@@ -116,9 +116,9 @@ void Collectables::draw(sf::RenderWindow & w)
 }
 
 void Collectables::printTiles(){
-    for(int i = 1; i<99; i++)
+    for(int i = 0; i<MAP_SIZE_X; i++)
     {
-        for(int j = 1; j<64; j++)
+        for(int j = 0; j<MAP_SIZE_Y; j++)
         {
             std::cout<<"Tile: "<<i<<" "<<j<<" "<<this->tiles[i][j]<<std::endl;
         }
