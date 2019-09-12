@@ -12,7 +12,6 @@ int main()
 
     window.setMouseCursorVisible(false);
 
-
     window.setFramerateLimit(WIN_FRAMERATE);
 
     while (window.isOpen())
@@ -23,6 +22,11 @@ int main()
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
+            {
+                window.close();
+                return 0;
+            }
+            else if(event.type== sf::Event::EventType::KeyPressed)
             {
                 window.close();
                 return 0;
