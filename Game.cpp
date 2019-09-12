@@ -8,7 +8,7 @@ Game::Game(){
     if(this->cursorTex.loadFromFile("Resources/cursorSprite.png"))
     {
         this->cursor.setTexture(cursorTex);
-        this->cursor.setTextureRect(sf::IntRect(0,0,20,20));
+        this->cursor.setTextureRect(sf::IntRect(0,0,40,40));
     }
 
     //this->col.printTiles();
@@ -41,7 +41,7 @@ void Game::update(sf::RenderWindow & w) {
 
 void Game::setCursorTex(bool yes)
 {
-    sf::IntRect result = !yes ? sf::IntRect(0,0,20,20) : sf::IntRect(20,0,20,20);
+    sf::IntRect result = !yes ? sf::IntRect(0,0,40,40) : sf::IntRect(40,0,40,40);
     this->cursor.setTextureRect(result);
 }
 
