@@ -8,6 +8,11 @@ Map::Map(){
         loaded = 1;
     }
 
+    for(int i=0; i<100; i++)
+        for(int j=0; j<65; j++)
+            this->numRand[i][j] = 1+std::rand()%6;
+
+
 }
 
 Map::~Map(){
@@ -23,18 +28,20 @@ void Map::load(){
     if(loaded)
     {
         srand(time(NULL));
-        unsigned long long int seed = 1 + rand()% 1000;
+        unsigned long long int seedx = 1 + rand()% 1000;
+        unsigned long long int seedy = 1 + rand()% 1000;
 
         for(int i=0; i<100; i++)
             for(int j=0; j<65; j++)
             {
                 float smoothness = 30;
-                this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness +seed , j/smoothness + seed) * 6);
+                this->mapSquares[i][j] = 7 + (SimplexNoise::noise(i/smoothness +seedx , j/smoothness + seedy) * 6);
             }
     }
 }
 
 void Map::draw(sf::RenderWindow & w, float cx, float cy){
+
     for(int i=(int)cx/GRID-16; i<(int)cx/GRID+17; i++)
     {
         for(int j=(int)cy/GRID-9; j<(int)cy/GRID+10; j++)
@@ -50,53 +57,40 @@ void Map::draw(sf::RenderWindow & w, float cx, float cy){
             switch (mapSquares [i][j])
              {
 
-                        case 1:
+                        case 1 ... 8:
                         {
-                            this->mapDrawer.setTextureRect(sf::IntRect(0,0,40,40)); break;
+                            if(this->numRand[i][j]==1)
+                                this->mapDrawer.setTextureRect(sf::IntRect(0,0,40,40));
+                            else if(this->numRand[i][j]==2)
+                                this->mapDrawer.setTextureRect(sf::IntRect(40,0,40,40));
+                            else if(this->numRand[i][j]==3)
+                                this->mapDrawer.setTextureRect(sf::IntRect(0,40,40,40));
+                            else if(this->numRand[i][j]==4)
+                                this->mapDrawer.setTextureRect(sf::IntRect(40,40,40,40));
+                            else if(this->numRand[i][j]==5)
+                                this->mapDrawer.setTextureRect(sf::IntRect(0,80,40,40));
+                            else if(this->numRand[i][j]==6)
+                                this->mapDrawer.setTextureRect(sf::IntRect(40,80,40,40));
+
+                                break;
                         }
-                        case 2:
+                        case 9 ... 10:
                         {
-                            this->mapDrawer.setTextureRect(sf::IntRect(40,0,40,40)); break;
+                            if(this->numRand[i][j]==1 || this->numRand[i][j]==2 || this->numRand[i][j]==3)
+                                this->mapDrawer.setTextureRect(sf::IntRect(0,120,40,40));
+                            else
+                                this->mapDrawer.setTextureRect(sf::IntRect(40,120,40,40));
+
+                            break;
                         }
-                        case 3:
+                        case 11 ... 12:
                         {
-                            this->mapDrawer.setTextureRect(sf::IntRect(0,40,40,40)); break;
-                        }
-                        case 4:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(40,40,40,40)); break;
-                        }
-                        case 5:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(0,80,40,40)); break;
-                        }
-                        case 6:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(0,80,40,40)); break;
-                        }
-                        case 7:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(40,80,40,40));  break;
-                        }
-                        case 8:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(40,80,40,40));  break;
-                        }
-                        case 9:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(0,120,40,40)); break;
-                        }
-                        case 10:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(40,120,40,40)); break;
-                        }
-                        case 11:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(0,160,40,40));  break;
-                        }
-                        case 12:
-                        {
-                            this->mapDrawer.setTextureRect(sf::IntRect(40,160,40,40));  break;
+                            if(this->numRand[i][j]==1 || this->numRand[i][j]==2 || this->numRand[i][j]==3)
+                                this->mapDrawer.setTextureRect(sf::IntRect(0,160,40,40));
+                            else
+                                this->mapDrawer.setTextureRect(sf::IntRect(40,160,40,40));
+
+                            break;
                         }
              }
             w.draw(this->mapDrawer);
