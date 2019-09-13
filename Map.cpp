@@ -42,9 +42,18 @@ void Map::load(){
 
 void Map::draw(sf::RenderWindow & w, float cx, float cy){
 
-    for(int i=(int)cx/GRID-16; i<(int)cx/GRID+17; i++)
+    int x{(int)cx/GRID+17};
+    int y{(int)cy/GRID+10};
+
+    if(x>MAP_SIZE_X-1)
+        x=MAP_SIZE_X;
+    if(y>MAP_SIZE_Y-1)
+        y=MAP_SIZE_Y;
+
+
+    for(int i=(int)cx/GRID-16;i<x;i++)
     {
-        for(int j=(int)cy/GRID-9; j<(int)cy/GRID+10; j++)
+        for(int j=(int)cy/GRID-9;j<y;j++)
         {
             this->mapDrawer.setPosition(sf::Vector2f(i*GRID, j*GRID));
             this->mapDrawer.setTexture(mapTiles);
