@@ -124,3 +124,15 @@ void Collectables::printTiles(){
         }
     }
 }
+
+int** Collectables::get_tiles()
+{
+    for(int i=0; i<MAP_SIZE_X; i++)
+    {
+        copyArray[i] = new int[MAP_SIZE_Y];
+            for(int j=0; j<MAP_SIZE_Y; j++)
+                copyArray[i][j] = this->tiles[i][j];
+    }
+
+    return copyArray;
+}

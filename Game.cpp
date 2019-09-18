@@ -4,6 +4,7 @@ Game::Game(){
    std::cout<<"Game started"<<std::endl;
     this->gameMap.load();
     col.setup(gameMap.get_mapSquares());
+    castles.setup(gameMap.get_mapSquares(),col.get_tiles());
 
     if(this->cursorTex.loadFromFile("Resources/cursorSprite.png"))
     {
@@ -29,6 +30,7 @@ void Game::printToConsole(const sf::RenderWindow & w) {
 void Game::printMap(sf::RenderWindow & w) {
     gameMap.draw(w,camera.getPosX(),camera.getPosY());
     col.draw(w);
+    castles.draw(w);
     w.draw(this->cursor);
 }
 

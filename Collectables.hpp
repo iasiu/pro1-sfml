@@ -14,12 +14,14 @@ public:
     void setup(int **); //inicjalizuje pozycjê drzew, kamieni i krzewow na mapie |
     void draw(sf::RenderWindow &);
     void printTiles();
+    int** get_tiles();
 private:
     int tiles[MAP_SIZE_X][MAP_SIZE_Y];
     sf::Sprite sprite;
     sf::Texture collectablesTexture;
     bool loaded;
     int seed;
+     int ** copyArray = new int * [MAP_SIZE_X];
 
     // int type; // 1 - tree1, 2 - tree2, 3 - stone1, 4 - stone2, 5 - bush1, 6 - bush2, 7 - water
 

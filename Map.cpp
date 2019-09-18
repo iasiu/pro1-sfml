@@ -113,7 +113,7 @@ void Map::checkMouseOver(float mx, float my, float cx, float cy, sf::Sprite& cur
     float y = my + cy - WIN_HEIGHT/2;
 
     std::cout <<"x: "<< x;  //pozycja myszy wzglêdem ca³ej mapy (globalna pozycja myszy)
-    std::cout <<" y: "<< y << std::endl;
+   std::cout <<" y: "<< y << std::endl;
 
      this->cordX=(int)(x)/GRID;                 //koordynaty x i y tile'a na którym jest mysz
      this->cordY=(int)(y)/GRID;

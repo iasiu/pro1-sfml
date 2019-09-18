@@ -8,6 +8,7 @@
 #include "Collectables.hpp"
 #include "Camera.hpp"
 #include "Constants.hpp"
+#include "Buildings.h"
 
 class Game {
 
@@ -25,7 +26,7 @@ private:
     HandleInput handleMouseInput;
     Camera camera;
     Collectables col;
-
+    Buildings castles;
 
     sf::Texture cursorTex;
     sf::Sprite cursor;
